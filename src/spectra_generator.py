@@ -17,7 +17,7 @@ def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bo
     # Params: N, cab, caw, car, cbrown, cm, lai, lidfa, psoil, rsoil, hspot, tts, tto, psi, ant
 
     num = sample_number * (param_dimension + 1) * 2
-    spec = np.zeros(num * wavelength_num).reshape(num, 2101)
+    spec = np.zeros(num * wavelength_num).reshape(num, wavelength_num)
 
     for i in range(num):
         p = params[i]
