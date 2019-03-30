@@ -1,0 +1,16 @@
+#name,lower_bound,upper_bound
+N,0.8,2.5
+cab,10.0,80.0
+caw,0.005,0.03
+car,0,20
+cbrown,0,1
+cm,0.001,0.03
+lai,0.001,10.0
+lidfa,30.0,70.0
+psoil,0.0,1.0
+rsoil,0.5,1.0
+hspot,0.0,1.0
+tts,0.0,50.0
+tto,0.0,50.0
+psi,0.0,180.0
+anth,0,20
