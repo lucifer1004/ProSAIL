@@ -4,7 +4,7 @@ import SALib
 from SALib.sample import saltelli
 from SALib.util import read_param_file
 
-def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bounds.txt', save_to_npy = False, spectra_save = '../data/spectra.npy', params_save = '../data/params.npy'):
+def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bounds.txt', save_to_npy = False, spectra_save = '../data/spectra.npy', params_save = '../data/params.npy', params_norm_save = '../data/params_norm.npy'):
 
     param_dimension = 15
     wavelength_start = 400
@@ -13,11 +13,12 @@ def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bo
 
     problem = read_param_file(bounds)
     params = saltelli.sample(problem, sample_number)
+    params_norm = params.copy()
 
     # Params: N, cab, caw, car, cbrown, cm, lai, lidfa, psoil, rsoil, hspot, tts, tto, psi, ant
 
     num = sample_number * (param_dimension + 1) * 2
-    spec = np.zeros(num * wavelength_num).reshape(num, wavelength_num)
+    spec = np.zeros(num * wavelength_num).reshape(num, 2101)
 
     for i in range(num):
         p = params[i]
@@ -37,9 +38,11 @@ def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bo
                                 psi = p[13], 
                                 ant = p[14],
                                 prospect_version = "D")
+        for j in range(param_dimension):
+            params_norm[i][j] = (p[j] - problem['bounds'][j][0]) / (problem['bounds'][j][1] - problem['bounds'][j][0])
 
     if save_to_npy:
         np.save(spectra_save, spec)
         np.save(params_save, params)
-
-    return np.column_stack((spec, params))
+        
+    return np.column_stack((spec, params_norm))

@@ -105,3 +105,10 @@ venv.bak/
 
 # IDEs
 .vscode
+.idea
+
+# models
+*.h5
+
+# notebooks
+notebooks
