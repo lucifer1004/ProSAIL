@@ -4,7 +4,7 @@ import SALib
 from SALib.sample import saltelli
 from SALib.util import read_param_file
 
-def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bounds.txt', save_to_npy = False, spectra_save = '../data/spectra.npy', params_save = '../data/params.npy', params_norm_save = '../data/params_norm.npy'):
+def generate(sample_number = 10000, bounds = '../assets/prosail_param_bounds.txt', save_to_npy = False, spectra_save = '../data/spectra.npy', params_save = '../data/params.npy', params_norm_save = '../data/params_norm.npy'):
 
     param_dimension = 15
     wavelength_start = 400

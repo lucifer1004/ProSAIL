@@ -104,6 +104,7 @@ venv.bak/
 .mypy_cache/
 
 # IDEs
+.DS_Store
 .vscode
 .idea
 
@@ -111,4 +112,6 @@ venv.bak/
 *.h5
 
 # notebooks
+r
 notebooks
+.Rproj.user
