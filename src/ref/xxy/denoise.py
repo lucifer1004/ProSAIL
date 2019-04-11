@@ -3,7 +3,6 @@ import math
 import numpy as np
 import matplotlib.pylab as plt
 
-
 # 获取近似基线
 def get_baseline(data, wavelets_name='sym8', level=5):
     '''
