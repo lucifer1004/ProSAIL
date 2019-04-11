@@ -115,3 +115,7 @@ venv.bak/
 r
 notebooks
 .Rproj.user
+*.npy
+
+# data
+data/field
