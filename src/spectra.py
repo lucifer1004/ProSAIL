@@ -5,27 +5,30 @@ from SALib.sample import saltelli
 from SALib.util import read_param_file
 import multiprocessing
 
+
 # Params: N, cab, caw, car, cbrown, cm, lai, lidfa, psoil, rsoil, hspot, tts, tto, psi, ant
 def generate_spectrum(p):
-    return ps.run_prosail(n = p[0], 
-                          cab = p[1], 
-                          cw = p[2],
-                          car = p[3], 
-                          cbrown = p[4], 
-                          cm = p[5],
-                          lai = p[6], 
-                          lidfa = p[7],
-                          psoil = p[8],
-                          rsoil = p[9],
-                          hspot = p[10],
-                          tts = p[11], 
-                          tto = p[12], 
-                          psi = p[13], 
-                          ant = p[14],
-                          prospect_version = "D")
+    return ps.run_prosail(n=p[0],
+                          cab=p[1],
+                          cw=p[2],
+                          car=p[3],
+                          cbrown=p[4],
+                          cm=p[5],
+                          lai=p[6],
+                          lidfa=p[7],
+                          psoil=p[8],
+                          rsoil=p[9],
+                          hspot=p[10],
+                          tts=p[11],
+                          tto=p[12],
+                          psi=p[13],
+                          ant=p[14],
+                          prospect_version="D")
 
-def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bounds.txt', save_to_npy = False, spectra_save = '../data/spectra.npy', params_save = '../data/params.npy', params_norm_save = '../data/params_norm.npy'):
 
+def generate_spectra(sample_number=10000, bounds='../assets/prosail_param_bounds.txt', save_to_npy=False,
+                     spectra_save='../data/spectra.npy', params_save='../data/params.npy',
+                     params_norm_save='../data/params_norm.npy'):
     param_dimension = 15
     wavelength_start = 400
     wavelength_end = 2500
@@ -49,5 +52,5 @@ def generate_spectra(sample_number = 10000, bounds = '../assets/prosail_param_bo
     if save_to_npy:
         np.save(spectra_save, spec)
         np.save(params_save, params)
-        
+
     return spec, params, params_norm
